@@ -1,6 +1,8 @@
 ; Alexander Peters CS-274
 ; Goal: Implement Blackjack using MASM and TASM
 
+; I struggled greatly with the random number generator and was unable to complete this aspect of the program unfortunately.
+
 ; Important Variables
 assume cs:code
 data segment
