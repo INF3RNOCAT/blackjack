@@ -76,9 +76,9 @@ code segment
       cmp si, 26
       je calculate_values
       mov al, byte ptr [player_deck + si]
-      cmp al, 'A'
-      je add_ace
-      cmp al, ''
+      ; cmp al, 'A'
+      ; je add_ace
+      ; cmp al, ''
       inc si
       call calculate_deck
 
@@ -108,6 +108,12 @@ code segment
       cmp al, 1 ; If the player enters 1, give them a random card, otherwise ret.
       je random_card
       ret
+
+   computer_prompt:
+      call calculate_deck ; This will get the value of the computer deck
+      cmp di, 17
+      jle random_card ; Draw random card if sum was less than 17
+      
 
    random_card:
       ; Random num seed
@@ -148,7 +154,7 @@ code segment
    ; Game runner
    game_loop:
       call prompt_card ; Ask user if they want a card
-      ;call computer_prompt ; computer algorithm
+      call computer_prompt ; computer algorithm
       call calculate_values ; Calculate deck values after turns
       jmp game_loop
       
